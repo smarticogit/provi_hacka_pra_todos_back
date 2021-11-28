@@ -1,3 +1,4 @@
+const cadastroUsuarioSchema = require('../validacoes/cadastroUsuarioSchema');
 const bcrypt = require('bcrypt');
 const knex = require('../conexao');
 const jwt = require('jsonwebtoken');
@@ -7,7 +8,9 @@ const cadastrarUsuario = async (req, res) => {
     const { nome, email, senha, cpf, tel } = req.body;
 
     try {
-        const existeUsuario = await knex('usuarios').where({ email }).first();
+        await cadastroUsuarioSchema.validate(req.body);
+
+        const existeUsuario = await knex('usuarios_hacka').where({ email }).first();
 
         if (existeUsuario) {
             return res.status(400).json({ message: "O email já existe" });
@@ -18,12 +21,10 @@ const cadastrarUsuario = async (req, res) => {
         const dados = {
             nome,
             email,
-            senha: senhaCriptografada,
-            cpf,
-            tel
+            senha: senhaCriptografada
         }
 
-        const usuario = await knex('usuarios').insert(dados).returning('*');
+        const usuario = await knex('usuarios_hacka').insert(dados).returning('*');
 
         if (!usuario) {
             return res.status(400).json({ message: "Usuário não cadastrado." });
@@ -34,5 +35,10 @@ const cadastrarUsuario = async (req, res) => {
         return res.status(400).json({ message: error.message });
     }
 }
+const listarUsuario = async (req, res) => {
+    return res.status(200).json({ message: "Listar Usuário" });
+}
 
-module.exports = { cadastrarUsuario };
+
+
+module.exports = { cadastrarUsuario, listarUsuario };

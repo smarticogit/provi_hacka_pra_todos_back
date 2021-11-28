@@ -1,1 +1,1 @@
-module.exports = passwkey;
+module.exports = process.env.SENHA_JWT;

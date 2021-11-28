@@ -1,5 +1,3 @@
-create database projetohacka;
-
 drop table if exists usuarios;
 
 create table if not exists usuarios (
