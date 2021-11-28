@@ -14,7 +14,7 @@ const verificaLogin = async (req, res, next) => {
 
         const { id } = jwt.verify(token, senhaHash);
 
-        const usuarioSelect = await knex('usuarios').where('id', id).first();
+        const usuarioSelect = await knex('usuarios_hacka').where({ id }).first();
 
         if (!usuarioSelect) {
             return res.status(404).json({ message: 'Usuario não encontrado' });
@@ -30,4 +30,4 @@ const verificaLogin = async (req, res, next) => {
     }
 }
 
-module.exports = verificaLogin
+module.exports = verificaLogin;

@@ -1,15 +1,12 @@
 const yup = require('./yup');
 
 const loginSchema = yup.object().shape({
-    email: yup
+    usuario: yup
         .string()
-        .email()
         .required(),
     senha: yup
         .string()
-        .required()
-        .min(5)
-        .max(10)
+        .required(),
 });
 
 module.exports = loginSchema;

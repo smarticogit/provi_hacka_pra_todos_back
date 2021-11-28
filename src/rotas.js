@@ -6,9 +6,10 @@ const verificaLogin = require('./filtros/verificaLogin');
 const rotas = express();
 
 rotas.post('/usuarios', usuarios.cadastrarUsuario);
-rotas.post('/usuarios', usuarios.listarUsuario);
 rotas.post('/login', login.login);
 
 rotas.use(verificaLogin);
+
+rotas.get('/usuarios', usuarios.listarUsuario);
 
 module.exports = rotas;
