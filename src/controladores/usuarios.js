@@ -3,11 +3,11 @@ const knex = require('../conexao');
 const jwt = require('jsonwebtoken');
 const key = require('../senhaHash');
 
-const cadastrarEstudante = async (req, res) => {
+const cadastrarUsuario = async (req, res) => {
     const { nome, email, senha, cpf, tel } = req.body;
 
     try {
-        const existeUsuario = await knex('estudantes').where({ email }).first();
+        const existeUsuario = await knex('usuarios').where({ email }).first();
 
         if (existeUsuario) {
             return res.status(400).json({ message: "O email já existe" });
@@ -23,16 +23,16 @@ const cadastrarEstudante = async (req, res) => {
             tel
         }
 
-        const usuario = await knex('estudantes').insert(dados).returning('*');
+        const usuario = await knex('usuarios').insert(dados).returning('*');
 
         if (!usuario) {
-            return res.status(400).json({ message: "Estudante não cadastrado." });
+            return res.status(400).json({ message: "Usuário não cadastrado." });
         }
 
-        return res.status(200).json({ message: "Estudante Cadastrado com Sucesso!" });
+        return res.status(200).json({ message: "Usuário Cadastrado com Sucesso!" });
     } catch (error) {
         return res.status(400).json({ message: error.message });
     }
 }
 
-module.exports = { cadastrarEstudante };
+module.exports = { cadastrarUsuario };
