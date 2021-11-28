@@ -1,10 +1,18 @@
-drop table if exists usuarios;
+drop table if exists usuarios_hacka;
 
-create table if not exists usuarios (
+create table if not exists usuarios_hacka(
 	id serial primary key,
   	nome text not null,
-  	email text not null unique,
-  	senha text not null,
-	cpf text unique,
-	tel text
+	usuario text unique not null,
+    senha text,
+	telefone text,
+    email text,
+    logradouro text,
+    numero text,
+    complemento text,
+    bairro text,
+    cidade text,
+    uf text,
+    cep text,
+    tipo_usuario text
 );
