@@ -11,18 +11,19 @@
    
    request
     {
+        "nome": string,
         "usuario": string,
         "senha":string,
         "telefone": string,
         "email":string,
-        "Logadouro": string,
+        "logradouro": string,
         "numero": string,
         "complemento": string,
         "bairro": string,
         "cidade": string,
         "uf":string(PB,SC,SP...)
         "cep": string,
-        "tipo_usuário": ["voluntario","ponto de apoio", "estudante"]
+        "tipo_usuario": ["voluntario","ponto de apoio", "estudante"]
     }
 
     

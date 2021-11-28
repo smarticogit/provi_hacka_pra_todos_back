@@ -1,20 +1,27 @@
 const yup = require('./yup');
 
 const cadastroUsuarioSchema = yup.object().shape({
-    email: yup
-        .string()
-        .email()
-        .required(),
-    senha: yup
-        .string()
-        .min(5)
-        .max(10)
-        .required(),
     nome: yup
         .string()
-        .min(3)
-        .max(10)
         .required()
+        .min(3),
+    usuario: yup
+        .string()
+        .required()
+        .min(5),
+    senha: yup
+        .string()
+        .required()
+        .min(5),
+    email: yup
+        .string()
+        .email(),
+    cep: yup
+        .string()
+        .email(),
+    tipo_usuario: yup
+        .string()
+        .min(5),
 });
 
 module.exports = cadastroUsuarioSchema;
