@@ -27,10 +27,29 @@
       -  Também é possível incluir os saberes que gostaria de aprender.
   
  
+## Instalação projeto local
+ 
+ Projeto foi desenvolvido em NodeJs.
+ 
+ ### Processo de instalação:
 
-  ## EndPoints
+- Clonar repositório, 
+
+- Instalar dependẽncias:
+
+> npm i
+
+- Rodar a api, no diretório "pai" :
   
-  #### Registar
+> npm run dev
+
+- Irá rodar na porta 8000 (http://localhost:8000/)
+    
+
+
+## EndPoints
+  
+#### Registar
 
 [POST] /api/registrar
    
@@ -43,9 +62,9 @@
             "email":string,                        
             "bairro": string,
             "cidade": string,
-            "uf":string(PB,SC,SP...)
+            "uf":string,
             "cep": string,
-            "tipo_usuário": ["voluntario","ponto de apoio", "estudante"] (not null)
+            "tipo_usuario": ["voluntario","ponto de apoio", "estudante"] (not null)
         }
 
 > response  staus 201
@@ -317,7 +336,7 @@
     }
 
 
-#### Atualizar dados 
+#### Atualizar dados (ainda não implementado...)
   Obrigatório para todas estas rotas estar logado, com passagem do token
 
 * Atualizar voluntário
